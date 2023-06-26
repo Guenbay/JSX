@@ -9,6 +9,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 const HomeScreen = ({navigation}) => 
 (
   <View style={styles.layout}> 
+          <Image
+        style={styles.img}
+        source={{
+          uri: 'https://reactnative.dev/img/tiny_logo.png',
+        }}
+      />
     <Text style={styles.title}>Login</Text> 
     <Text> Login the Cat-Power </Text>
 
@@ -25,7 +31,7 @@ const HomeScreen = ({navigation}) =>
         title = "Check in"
         onPress= {() => navigation.navigate("Home/LogedIn")}
       />
-
+  
   </View> 
 ); 
 
@@ -176,6 +182,8 @@ const styles = StyleSheet.create({
   img: {
     width: 250,
     height: 200,
+    justifyContent: 'center',
+   
   }
 
 }); 
