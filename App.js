@@ -1,39 +1,61 @@
 import * as React from 'react';
-import { useState} from 'react';
+import { useState, useQuery,} from 'react';
 import { Button, View, Text, StyleSheet, TextInput, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
- 
+import { UseGetAllData } from './getDatabaseQuery';
+//Beginns here to React fetch myPHP
 
-const HomeScreen = ({navigation}) => 
-(
-  <View style={styles.layout}> 
-          <Image
+
+//Worklines here
+
+function HomeScreen({ navigation }) {
+  const {data, isLoading} = UseGetAllData();
+
+  return (
+    <View style={styles.layout}>
+     {isLoading ? (
+        <Text>Loading...</Text>
+      ) : data ? (
+        data.data.map((Name, Key) => {
+          return (
+            <View>
+             <Text>{Name.Benutzername}</Text>  
+            </View>
+          )    
+       })     
+      ) : (
+        <Text>Whoops No Data Available</Text>
+      )}
+    
+
+      <Image
         style={styles.img}
         source={{
           uri: 'https://reactnative.dev/img/tiny_logo.png',
-        }}
-      />
-    <Text style={styles.title}>Login</Text> 
-    <Text> Login the Cat-Power </Text>
+        }} />
 
-    <TextInput
-      style={styles.textinput}
-      placeholder="Username"
-      onChangeText={text => null} />
+      
+      
+      <Text style={styles.title}>Login</Text>
+      <Text> Login the Cat-Power </Text>
+
+      <TextInput
+        style={styles.textinput}
+        placeholder="Username"
+        onChangeText={text => null} />
       <TextInput
         style={styles.textinput}
         placeholder='Passwort'
-        secureTextEntry
-        />
-      <Button 
-        title = "Check in"
-        onPress= {() => navigation.navigate("Home/LogedIn")}
-      />
-  
-  </View> 
-); 
+        secureTextEntry />
+      <Button
+        title="Check in"
+        onPress={() => navigation.navigate("Home/LogedIn")} />
+
+    </View>
+  );
+} 
 
 const LogedInScreen = ({navigation}) =>
  (
