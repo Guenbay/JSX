@@ -4,39 +4,23 @@ import { Button, View, Text, StyleSheet, TextInput, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { UseGetAllData } from './getDatabaseQuery';
+import { UseGetData } from '../src/getData';
+
 //Beginns here to React fetch myPHP
 
 
 //Worklines here
 
 function HomeScreen({ navigation }) {
-  const {data, isLoading} = UseGetAllData();
-
+  
   return (
     <View style={styles.layout}>
-     {isLoading ? (
-        <Text>Loading...</Text>
-      ) : data ? (
-        data.data.map((Name, Key) => {
-          return (
-            <View>
-             <Text>{Name.Benutzername}</Text>  
-            </View>
-          )    
-       })     
-      ) : (
-        <Text>Whoops No Data Available</Text>
-      )}
-    
 
       <Image
         style={styles.img}
         source={{
           uri: 'https://reactnative.dev/img/tiny_logo.png',
         }} />
-
-      
       
       <Text style={styles.title}>Login</Text>
       <Text> Login the Cat-Power </Text>
@@ -51,7 +35,8 @@ function HomeScreen({ navigation }) {
         secureTextEntry />
       <Button
         title="Check in"
-        onPress={() => navigation.navigate("Home/LogedIn")} />
+        onPress={() => navigation.navigate("Home/LogedIn")} 
+        />
 
     </View>
   );
