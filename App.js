@@ -12,7 +12,8 @@ import { UseGetData } from '../src/getData';
 //Worklines here
 
 function HomeScreen({ navigation }) {
-  
+  const getData = UseGetData;
+
   return (
     <View style={styles.layout}>
 
@@ -28,14 +29,14 @@ function HomeScreen({ navigation }) {
       <TextInput
         style={styles.textinput}
         placeholder="Username"
-        onChangeText={text => null} />
+        onChangeText={_text => null} />
       <TextInput
         style={styles.textinput}
         placeholder='Passwort'
         secureTextEntry />
       <Button
         title="Check in"
-        onPress={(UseGetData) => navigation.navigate("Home/LogedIn")} 
+        onPress={(getData) => navigation.navigate("Home/LogedIn")} 
         />
 
     </View>
@@ -101,7 +102,7 @@ const MessageScreen = ({navigation}) => {
       <TextInput 
         style={styles.textinput} 
         placeholder="Your Name"
-        onChangeText={text => null} 
+        onChangeText={_text => null} 
       /> 
 
       <Text style={{ marginVertical: 16 }}> 
