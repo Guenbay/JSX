@@ -4,7 +4,7 @@ import { Button, View, Text, StyleSheet, TextInput, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { UseGetData } from '../src/getData';
+import { UseGetData } from './src/getData';
 
 //Beginns here to React fetch myPHP
 
