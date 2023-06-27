@@ -35,7 +35,7 @@ function HomeScreen({ navigation }) {
         secureTextEntry />
       <Button
         title="Check in"
-        onPress={() => navigation.navigate("Home/LogedIn")} 
+        onPress={(UseGetData) => navigation.navigate("Home/LogedIn")} 
         />
 
     </View>
