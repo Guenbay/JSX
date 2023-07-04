@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "schulapprn-finalversion",
-    "slug": "schulapprn-finalversion",
+    "name": "schulapp",
+    "slug": "schulapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,12 +25,6 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "2ed2ce10-2ba1-498d-a6b8-6b464d3eb1fc"
-      }
-    },
-    "owner": "guenbay"
+    }
   }
 }
