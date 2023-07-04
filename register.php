@@ -1,15 +1,5 @@
 <?php
 
-header('Access-Control-Allow-Origin: *');
-header('Content-Type: application/json');
-
-
-echo json_encode("OK");
-
-die();
-
-
-
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -24,12 +14,14 @@ if ($conn->connect_error) {
 }
 
 // Überprüfen, ob alle Werte gesetzt und nicht leer sind
-if (isset($_Get['Benutzername']) && isset($_Get['Passwort']) && isset($_Get['Name']) && isset($_Get['Geburtsdatum'])) {
-    $benutzername = $_Get['Benutzername'];
-    $passwort = $_Get['Passwort'];
-    $name = $_Get['Name'];
-    $geburtsdatum = $_Get['Geburtsdatum'];
+if (isset($_GET['Benutzername']) && isset($_GET['Passwort']) && isset($_GET['Name']) && isset($_GET['Geburtsdatum'])) {
+    $benutzername = $_GET['Benutzername'];
+    $passwort = $_GET['Passwort'];
+    $name = $_GET['Name'];
+    $geburtsdatum = $_GET['Geburtsdatum'];
     $registriert = date("Y-m-d"); // Aktuelles Datum im MySQL-Format
+
+    
 
     // Überprüfen, ob kein Wert leer ist
     if (!empty($benutzername) && !empty($passwort) && !empty($name) && !empty($geburtsdatum)) {
@@ -38,17 +30,22 @@ if (isset($_Get['Benutzername']) && isset($_Get['Passwort']) && isset($_Get['Nam
 
         // SQL-Abfrage ausführen
         if ($conn->query($sql) === TRUE) {
-            echo "ok";
+            header('Access-Control-Allow-Origin: *');
+            header('Content-Type: application/json');
+            echo json_encode('OK');
 
         } else {
             echo "Fehler beim Hinzufügen des Eintrags: " . $conn->error;
+            header('Access-Control-Allow-Origin: *');
+            header('Content-Type: application/json');
+            echo json_encode("Fehler beim Hinzufügen des Eintrags");
         }
     } else {
-        echo "Alle Felder müssen ausgefüllt sein";
+        header('Access-Control-Allow-Origin: *');
+        header('Content-Type: application/json');
+        echo json_encode('Alle Felder müssen ausgefüllt sein');
     }
-} else {
-    echo "Alle Felder müssen ausgefüllt sein";
-}
+} 
 
 // Verbindung zur Datenbank schließen
 $conn->close();

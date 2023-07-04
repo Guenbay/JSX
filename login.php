@@ -1,4 +1,7 @@
 <?php
+
+error_reporting(E_ALL);
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -27,12 +30,19 @@ if ($result->num_rows > 0) {
     // Benutzer gefunden, überprüfen ob das Passwort korrekt ist
     $row = $result->fetch_assoc();
     if ($row['Passwort'] == $passwort) {
-        echo "Benutzer gefunden";
+        header('Access-Control-Allow-Origin: *');
+        header('Content-Type: application/json');
+        echo json_encode("OK");
+
     } else {
-        echo "Passwort falsch";
+        header('Access-Control-Allow-Origin: *');
+        header('Content-Type: application/json');
+        echo json_encode("Passwort falsch");
     }
 } else {
-    echo "Benutzer nicht gefunden";
+        header('Access-Control-Allow-Origin: *');
+        header('Content-Type: application/json');
+        echo json_encode("Benutzer nicht gefunden");
 }
 
 // Verbindung zur Datenbank schließen
